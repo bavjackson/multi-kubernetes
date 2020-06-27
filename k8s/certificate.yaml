@@ -1,0 +1,20 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: bavjackson-staging-com-tls
+spec:
+  secretName: bavjackson-staging-com
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: bavjackson-staging.com
+  dnsNames:
+    - bavjackson-staging.com
+    - www.bavjackson-staging.com
+  acme:
+    config:
+      - http01:
+          ingressClass: nginx
+        domains:
+          - bavjackson-staging.com
+          - www.bavjackson-staging.com
